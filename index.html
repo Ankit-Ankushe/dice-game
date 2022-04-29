@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #dice {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 300px;
+            gap: 50px;
+        }
+
+        #dice>div {
+            border: 1px solid red;
+            margin: auto;
+            text-align: center;
+        }
+
+        button {
+            padding: 1%;
+            background-color: aqua;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="winner">
+        <h1 id="showWinner">WINNER</h1>
+    </div>
+    <div id="dice">
+        <div id="member1"><img
+                src="https://tse2.mm.bing.net/th?id=OIP.JH-aeTynl3YMtTrY6oxegQHaGq&pid=Api&P=0&w=186&h=167">
+            <p>player1</p>
+            <p id="m1"></p>
+        </div>
+        <div id="member2"><img
+                src="https://tse2.mm.bing.net/th?id=OIP.JH-aeTynl3YMtTrY6oxegQHaGq&pid=Api&P=0&w=186&h=167">
+            <p>player2</p>
+            <p id="m2"></p>
+        </div>
+        <div id="member3"><img
+                src="https://tse2.mm.bing.net/th?id=OIP.JH-aeTynl3YMtTrY6oxegQHaGq&pid=Api&P=0&w=186&h=167">
+            <p>player3</p>
+            <p id="m3"></p>
+        </div>
+    </div>
+    <button onclick="diceThrow()">ROLL THE DICE</button>
+    <button onclick="Reload()">PLAY GAME AGAIN</button>
+</body>
+<script>
+    function diceThrow() {
+        let p1 = Math.floor(Math.random() * 6) + 1;
+        let p2 = Math.floor(Math.random() * 6) + 1;
+        let p3 = Math.floor(Math.random() * 6) + 1;
+        console.log(p1, p2, p3)
+
+        document.getElementById("m1").innerText = "score  " + p1;
+
+        document.getElementById("m2").innerText = "score " + p2;
+
+        document.getElementById("m3").innerText = "score " + p3;
+         
+        if(p1>p2 && p1>p3){
+            document.getElementById("showWinner").innerText="WINNER IS PLAYER1"
+            document.getElementById("member1").style.backgroundColor="green"
+        }
+       else if(p2>p3 && p2>p1){
+            document.getElementById("showWinner").innerText="WINNER IS PLAYER2"
+            document.getElementById("member2").style.backgroundColor="green"
+        }
+        else if(p3>p1 && p3>p2){
+            document.getElementById("showWinner").innerText="WINNER IS PLAYER3"
+            document.getElementById("member3").style.backgroundColor="green"
+        }
+        else if(p1==p2 ){
+            document.getElementById("showWinner").innerText="MATCH DRAW"
+            document.getElementById("member1").style.backgroundColor="blue"
+            document.getElementById("member2").style.backgroundColor="blue"
+        }
+        else if(p2==p3 ){
+            document.getElementById("showWinner").innerText="MATCH DRAW"
+            document.getElementById("member3").style.backgroundColor="blue"
+            document.getElementById("member2").style.backgroundColor="blue"
+        }
+        else{
+            document.getElementById("showWinner").innerText="MATCH DRAW"
+            document.getElementById("member3").style.backgroundColor="blue"
+            document.getElementById("member2").style.backgroundColor="blue"
+            document.getElementById("member1").style.backgroundColor="blue"
+        }
+           
+    }
+    function Reload(){
+            window.location.reload();
+        }
+   
+</script>
+
+</html>
